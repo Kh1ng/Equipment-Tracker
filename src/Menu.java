@@ -25,13 +25,18 @@ public class Menu {
 		do {
 			System.out.print("Enter your choice: ");
 			String input = scan.next();
-			if((Integer.parseInt(input) <= numItems) && (Integer.parseInt(input) > 0)){
-				selection = Integer.parseInt(input);
+			try {
+				if((Integer.parseInt(input) <= numItems) && (Integer.parseInt(input) > 0)){
+					selection = Integer.parseInt(input);
+				}
+				else {
+					System.out.println("Please enter a valid selection between 1 and " + numItems + ".");
+					selection = -1;
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Please enter a valid selection between 1 and " + numItems + ".");
 			}
-			else {
-				selection = -1;
-				System.out.println("Please enter a valid selection 1 - " + numItems + ".");
-			}
+			
 		} while(selection == -1);
 		return selection;
 	}
